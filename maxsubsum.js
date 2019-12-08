@@ -1,4 +1,5 @@
 
+// does not work with all negative numbers
 const brute = (arr) => {
     if(!arr || arr.length == 0) {
         return null
@@ -20,16 +21,14 @@ const kadane = (arr) => {
     if(!arr || arr.length == 0) {
         return null
     }
-    let maxglobal = arr[0]
-    let maxcurrent = arr[0]
+    let maxglobal = 0
+    let maxcurrent = 0
 
-    for(let i=1;i<arr.length;i++) {
-        maxcurrent = Math.max(arr[i]+maxcurrent, maxcurrent)
+    for(let i=0;i<arr.length;i++) {
+        maxcurrent = Math.max(arr[i]+maxcurrent, 0)
         if(maxglobal < maxcurrent) {
             maxglobal = maxcurrent
         }
-        
-        maxcurrent = arr[i] + maxcurrent
     }
     return maxglobal
 }
